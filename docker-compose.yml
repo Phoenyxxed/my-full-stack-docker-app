@@ -1,21 +1,19 @@
 services:
   nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
+    image: phoenyxxed/nginx:5b74726
     container_name: nginx-container
     ports:
       - "80:80"
     depends_on:
       - frontend
-      - backend
+      - backend-1
+      - backend-2
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: phoenyxxed/frontend:5b74726
     container_name: frontend-container
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: backend-container
+  backend-1:
+    image: phoenyxxed/backend:5b74726
+    container_name: backend-container-1
+  backend-2:
+    image: phoenyxxed/backend:5b74726
+    container_name: backend-container-2
